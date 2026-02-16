@@ -1,0 +1,181 @@
+<head>
+  <style>
+    /* General Styling */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: white !important;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      height: 65px;
+      padding: 0 20px; /* Keeps right padding */
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      flex-grow: 1;
+    }
+
+    .logo {
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .site-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #0086ce;
+      white-space: nowrap;
+    }
+
+    /* Navigation Links */
+    .navbar {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar li {
+      display: flex;
+      gap: 15px;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: #0086ce !important;
+      font-size: 18px;
+      padding: 10px 15px;
+    }
+
+    .menu-icon {
+      display: none;
+      font-size: 26px;
+      cursor: pointer;
+      color: #0086ce;
+      margin-right: 25px;
+    }
+
+    /* Sidebar Navigation */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      right: -250px;
+      width: 250px;
+      height: 100%;
+      background: white;
+      box-shadow: -4px 0 6px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      padding-top: 60px;
+      transition: right 0.3s ease-in-out;
+      z-index: 1100;
+    }
+
+    .sidebar.active {
+      right: 0;
+    }
+
+    .sidebar a {
+      padding: 15px;
+      text-decoration: none;
+      color: #0086ce;
+      font-size: 18px;
+      display: block;
+      transition: background 0.3s;
+    }
+
+    .sidebar a:hover {
+      background: #f1f1f1;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 24px;
+      cursor: pointer;
+      color: #0086ce;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      nav {
+        padding: 0 10px; /* Removes extra left padding */
+      }
+
+      .menu-icon {
+        display: block;
+      }
+
+      .navbar {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<nav>
+  {% load static %} {% comment %}
+  <div class="logo-container">
+    <img
+      src="{% static 'files/logo.png' %}"
+      class="logo"
+      alt="Logo"
+      title="DD Tours and Travels"
+    />
+    <span class="site-title">DD Tours and Travels</span>
+  </div>
+  {% endcomment %}
+  <div class="logo-container">
+    <a
+      href="{% url 'home' %}"
+      style="text-decoration: none; display: flex; align-items: center"
+    >
+      <img
+        src="{% static 'files/logo.png' %}"
+        class="logo"
+        alt="Logo"
+        title="DD Tours and Travels"
+      />
+      <span class="site-title">DD Tours and Travels</span>
+    </a>
+  </div>
+
+  <!-- Desktop Navigation -->
+  <ul class="navbar">
+    <li>
+      <a href="{% url 'home' %}">Home</a>
+      <a href="">Locations</a>
+      <a href="{% url 'about' %}">About Us</a>
+    <a href="{% url 'contact' %}">Contact Us</a>
+      <a href="{% url 'login' %}">Login</a>
+    </li>
+  </ul>
+
+  <!-- Hamburger Menu -->
+  <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+  <!-- Sidebar Navigation -->
+  <div class="sidebar" id="sidebar">
+    <span class="close-btn" onclick="toggleMenu()">×</span>
+    <a href="{% url 'home' %}">Home</a>
+    <a href="">Locations</a>
+    <a href="{% url 'about' %}">About Us</a>
+    <a href="{% url 'contact' %}">Contact Us</a>
+    <a href="{% url 'login' %}">login</a>
+  </div>
+</nav>
+
+<script>
+  function toggleMenu() {
+    var sidebar = document.getElementById("sidebar");
+    sidebar.classList.toggle("active");
+  }
+</script>

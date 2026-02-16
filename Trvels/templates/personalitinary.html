@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7-Day Kashmir Itinerary</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: #f0f4f8;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      header {
+        text-align: center;
+        padding: 20px 0;
+        background: linear-gradient(135deg, #2c3e50, #3498db);
+        color: #fff;
+        border-radius: 10px 10px 0 0;
+        margin-bottom: 30px;
+      }
+
+      header h1 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+      }
+
+      header p {
+        font-size: 1.1em;
+        opacity: 0.9;
+      }
+
+      .itinerary-day {
+        margin-bottom: 30px;
+        border-left: 4px solid #3498db;
+        padding-left: 20px;
+        position: relative;
+      }
+
+      .itinerary-day h2 {
+        font-size: 1.8em;
+        color: #2c3e50;
+        margin-bottom: 10px;
+      }
+
+      .itinerary-day .date {
+        font-size: 1em;
+        color: #777;
+        margin-bottom: 15px;
+      }
+
+      .itinerary-day ul {
+        list-style: none;
+      }
+
+      .itinerary-day ul li {
+        background-color: #f9f9f9;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        transition: transform 0.2s;
+      }
+
+      .itinerary-day ul li:hover {
+        transform: translateX(5px);
+        background-color: #e9ecef;
+      }
+
+      .itinerary-day ul li .time {
+        font-weight: bold;
+        color: #3498db;
+        min-width: 100px;
+      }
+
+      .itinerary-day ul li .activity {
+        flex: 1;
+      }
+
+      footer {
+        text-align: center;
+        padding: 20px 0;
+        margin-top: 40px;
+        background-color: #2c3e50;
+        color: #fff;
+        border-radius: 0 0 10px 10px;
+      }
+
+      footer p {
+        font-size: 0.9em;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          margin: 20px;
+          padding: 15px;
+        }
+
+        header h1 {
+          font-size: 2em;
+        }
+
+        .itinerary-day h2 {
+          font-size: 1.5em;
+        }
+
+        .itinerary-day ul li {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .itinerary-day ul li .time {
+          margin-bottom: 5px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>7-Day Kashmir Itinerary</h1>
+        <p>
+          Explore the Paradise on Earth: Srinagar, Gulmarg, Pahalgam, and More
+        </p>
+      </header>
+
+      <!-- Day 1 -->
+      <div class="itinerary-day">
+        <h2>Day 1: Arrival in Srinagar</h2>
+        <p class="date">March 15, 2025</p>
+        <ul>
+          <li>
+            <span class="time">12:00 PM</span>
+            <span class="activity"
+              >Arrive at Srinagar Airport, transfer to a houseboat on Dal
+              Lake.</span
+            >
+          </li>
+          <li>
+            <span class="time">02:00 PM</span>
+            <span class="activity"
+              >Lunch at a local restaurant (try Kashmiri Wazwan).</span
+            >
+          </li>
+          <li>
+            <span class="time">04:00 PM</span>
+            <span class="activity"
+              >Shikara ride on Dal Lake, visit floating markets.</span
+            >
+          </li>
+          <li>
+            <span class="time">07:00 PM</span>
+            <span class="activity"
+              >Dinner and overnight stay at the houseboat.</span
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- Day 2 -->
+      <div class="itinerary-day">
+        <h2>Day 2: Srinagar Sightseeing</h2>
+        <p class="date">March 16, 2025</p>
+        <ul>
+          <li>
+            <span class="time">08:00 AM</span>
+            <span class="activity">Breakfast at the houseboat.</span>
+          </li>
+          <li>
+            <span class="time">09:00 AM</span>
+            <span class="activity"
+              >Visit Mughal Gardens: Shalimar Bagh, Nishat Bagh.</span
+            >
+          </li>
+          <li>
+            <span class="time">01:00 PM</span>
+            <span class="activity">Lunch at a local eatery.</span>
+          </li>
+          <li>
+            <span class="time">03:00 PM</span>
+            <span class="activity"
+              >Explore Hazratbal Shrine and Shankaracharya Temple.</span
+            >
+          </li>
+          <li>
+            <span class="time">07:00 PM</span>
+            <span class="activity">Return to houseboat, dinner, and rest.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Day 3 -->
+      <div class="itinerary-day">
+        <h2>Day 3: Srinagar to Gulmarg</h2>
+        <p class="date">March 17, 2025</p>
+        <ul>
+          <li>
+            <span class="time">07:00 AM</span>
+            <span class="activity"
+              >Early breakfast and drive to Gulmarg (approx. 2 hours).</span
+            >
+          </li>
+          <li>
+            <span class="time">10:00 AM</span>
+            <span class="activity"
+              >Take the Gondola ride (Phase 1 & 2) to Khilanmarg.</span
+            >
+          </li>
+          <li>
+            <span class="time">01:00 PM</span>
+            <span class="activity"
+              >Lunch at a local restaurant in Gulmarg.</span
+            >
+          </li>
+          <li>
+            <span class="time">03:00 PM</span>
+            <span class="activity"
+              >Enjoy skiing or snowboarding (if visiting in winter).</span
+            >
+          </li>
+          <li>
+            <span class="time">07:00 PM</span>
+            <span class="activity"
+              >Check into a hotel in Gulmarg, dinner, and rest.</span
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- Day 4 -->
+      <div class="itinerary-day">
+        <h2>Day 4: Gulmarg to Pahalgam</h2>
+        <p class="date">March 18, 2025</p>
+        <ul>
+          <li>
+            <span class="time">08:00 AM</span>
+            <span class="activity"
+              >Breakfast and drive to Pahalgam (approx. 4 hours).</span
+            >
+          </li>
+          <li>
+            <span class="time">01:00 PM</span>
+            <span class="activity">Arrive in Pahalgam, have lunch.</span>
+          </li>
+          <li>
+            <span class="time">03:00 PM</span>
+            <span class="activity">Visit Betaab Valley and Aru Valley.</span>
+          </li>
+          <li>
+            <span class="time">07:00 PM</span>
+            <span class="activity"
+              >Check into a hotel in Pahalgam, dinner, and rest.</span
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- Day 5 -->
+      <div class="itinerary-day">
+        <h2>Day 5: Pahalgam Exploration</h2>
+        <p class="date">March 19, 2025</p>
+        <ul>
+          <li>
+            <span class="time">08:00 AM</span>
+            <span class="activity">Breakfast at the hotel.</span>
+          </li>
+          <li>
+            <span class="time">09:00 AM</span>
+            <span class="activity"
+              >Horse ride to Baisaran Valley (Mini Switzerland).</span
+            >
+          </li>
+          <li>
+            <span class="time">01:00 PM</span>
+            <span class="activity">Lunch by the Lidder River.</span>
+          </li>
+          <li>
+            <span class="time">03:00 PM</span>
+            <span class="activity"
+              >Explore local markets for handicrafts and Pashmina shawls.</span
+            >
+          </li>
+          <li>
+            <span class="time">07:00 PM</span>
+            <span class="activity">Dinner and overnight stay in Pahalgam.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Day 6 -->
+      <div class="itinerary-day">
+        <h2>Day 6: Pahalgam to Srinagar & Sonmarg</h2>
+        <p class="date">March 20, 2025</p>
+        <ul>
+          <li>
+            <span class="time">07:00 AM</span>
+            <span class="activity"
+              >Breakfast and drive to Sonmarg (via Srinagar, approx. 5
+              hours).</span
+            >
+          </li>
+          <li>
+            <span class="time">01:00 PM</span>
+            <span class="activity">Arrive in Sonmarg, have lunch.</span>
+          </li>
+          <li>
+            <span class="time">02:30 PM</span>
+            <span class="activity"
+              >Visit Thajiwas Glacier (pony ride or trek).</span
+            >
+          </li>
+          <li>
+            <span class="time">06:00 PM</span>
+            <span class="activity"
+              >Drive back to Srinagar, check into a hotel.</span
+            >
+          </li>
+          <li>
+            <span class="time">08:00 PM</span>
+            <span class="activity">Dinner and rest.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Day 7 -->
+      <div class="itinerary-day">
+        <h2>Day 7: Departure from Srinagar</h2>
+        <p class="date">March 21, 2025</p>
+        <ul>
+          <li>
+            <span class="time">08:00 AM</span>
+            <span class="activity">Breakfast at the hotel.</span>
+          </li>
+          <li>
+            <span class="time">09:00 AM</span>
+            <span class="activity">Last-minute shopping at Lal Chowk.</span>
+          </li>
+          <li>
+            <span class="time">11:00 AM</span>
+            <span class="activity"
+              >Transfer to Srinagar Airport for departure.</span
+            >
+          </li>
+        </ul>
+      </div>
+
+      <footer>
+        <p>Created with ❤️ for an unforgettable Kashmir journey</p>
+      </footer>
+    </div>
+
+    <script>
+      // Minimal JS for potential future interactivity (e.g., smooth scrolling or highlighting days)
+      // Currently, it's a static page, so no JS functionality is implemented.
+      console.log("Kashmir Itinerary Loaded!");
+    </script>
+  </body>
+</html>

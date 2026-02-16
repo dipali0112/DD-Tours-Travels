@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inquiry Form</title>
+    {% load static %}
+
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">   
+    <link rel="icon" href="{% static 'files/logo.png' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <script>
+        // Ensure departure date is not before today
+        function validateDates() {
+            const departureDate = document.getElementById('departure_date').value;
+            const returnDate = document.getElementById('return_date').value;
+            const today = new Date().toISOString().split('T')[0];
+
+            if (departureDate < today) {
+                alert('Departure date cannot be in the past.');
+                return false;
+            }
+
+            if (returnDate && returnDate <= departureDate) {
+                alert('Return date must be after the departure date.');
+                return false;
+            }
+            return true;
+        }
+
+        // Phone number validation
+        function validatePhone() {
+            const phone = document.getElementById('contact_no').value;
+            const phonePattern = /^[0-9]{10}$/; // Ensure the phone number is exactly 10 digits.
+
+            if (!phonePattern.test(phone)) {
+                alert('Please enter a valid 10-digit phone number.');
+                return false;
+            }
+            return true;
+        }
+
+        // Combined form validation
+        function validateForm() {
+            return validateDates() && validatePhone();
+        }
+    </script>
+</head>
+<body>
+    <!-- Navbar -->
+    {% include 'navbar.html' %}
+
+    <!-- Inquiry Form -->
+    <section class="inquiry-form" style="margin-top:80px;">
+        <div class="form-container">
+            <h2>Inquiry Form</h2>
+            <form action="{% url 'submit_inquiry' %}" method="post" onsubmit="return validateForm()">
+                {% csrf_token %}
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required> <!-- Browser will automatically validate -->
+
+                <label for="contact_no">Contact No:</label>
+                <input type="text" id="contact_no" name="contact_no" required> <!-- Custom validation via JavaScript -->
+
+                <label for="place">Place:</label>
+                <input type="text" id="place" name="place" required>
+
+                <label for="persons">Number of Persons:</label>
+                <input type="number" id="persons" name="persons" required>
+
+                <label for="departure_date">Departure Date:</label>
+                <input type="date" id="departure_date" name="departure_date" required>
+
+                <label for="return_date">Return Date:</label>
+                <input type="date" id="return_date" name="return_date" required>
+
+                <label for="transportation">Transportation by:</label>
+                <select id="transportation" name="transportation" required>
+                    <option value="flight">Flight</option>
+                    <option value="train">Train</option>
+                </select>
+
+                <button type="submit" class="btn-submit">Submit Inquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    {% include 'footer.html' %}
+</body>
+</html>

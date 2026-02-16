@@ -1,0 +1,84 @@
+<!-- Chat Button -->
+<button onclick="toggleChatbot()" id="chatbotBtn">💬</button>
+
+<!-- Chatbot Container -->
+<div id="chatbotContainer">
+  <div id="chatbotHeader">
+    <span>Chat with us </span>
+    <button onclick="toggleChatbot()" id="closeChatbot">&times;</button>
+  </div>
+  <iframe
+    src="https://www.chatbase.co/chatbot-iframe/sNj74ycDfnpjKX2ke7d0O"
+    width="100%"
+    height="100%"
+    frameborder="0"
+  >
+  </iframe>
+</div>
+
+<!-- Chatbot Styles -->
+<style>
+  /* Chat Button */
+  #chatbotBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #007bff; /* Solid blue background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 10000; /* Ensure button appears above everything */
+    opacity: 1; /* Fully visible */
+  }
+
+  #chatbotContainer {
+    display: none;
+    position: fixed;
+    top: 60px !important;
+    right: 10px;
+    width: 350px;
+    height: 500px;
+    background: white;
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 9999; /* Ensure it appears above other content */
+  }
+
+  /* Chatbot Header */
+  #chatbotHeader {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+  }
+
+  /* Close Button */
+  #closeChatbot {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+  }
+</style>
+
+<!-- Chatbot Script -->
+<script>
+  function toggleChatbot() {
+    var chatContainer = document.getElementById("chatbotContainer");
+    chatContainer.style.display =
+      chatContainer.style.display === "none" ||
+      chatContainer.style.display === ""
+        ? "block"
+        : "none";
+  }
+</script>

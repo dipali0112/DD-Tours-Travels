@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smooth Travel Animation</title>
+    <script src="https://unpkg.com/maplibre-gl@3.2.0/dist/maplibre-gl.js"></script>
+    <link
+      href="https://unpkg.com/maplibre-gl@3.2.0/dist/maplibre-gl.css"
+      rel="stylesheet"
+    />
+    <style>
+      body,
+      html {
+        margin: 0;
+        height: 100%;
+        overflow: hidden;
+      }
+      #map {
+        width: 100vw;
+        height: 100vh;
+      }
+      .place-label {
+        font-size: 14px;
+        font-weight: bold;
+        background: white;
+        padding: 4px 8px;
+        border-radius: 4px;
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <script>
+      var map = new maplibregl.Map({
+        container: "map",
+        style: "https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json",
+        center: [74.8581, 32.6927], // Jammu Tawi Railway Station
+        zoom: 7,
+        pitch: 50,
+      });
+
+      var route = [
+        { name: "Jammu Tawi Railway Station", coords: [74.8581, 32.6927] },
+        { name: "Katra", coords: [74.9286, 32.9908] },
+        { name: "Vaishno Devi", coords: [74.949, 33.03] },
+        { name: "Srinagar", coords: [74.7973, 34.0837] },
+        { name: "Gulmarg", coords: [74.3805, 34.0489] },
+        { name: "Sonmarg", coords: [75.295, 34.31] },
+        { name: "Jammu Tawi Railway Station", coords: [74.8581, 32.6927] }, // Back to start
+      ];
+
+      map.on("load", function () {
+        map.addSource("route", {
+          type: "geojson",
+          data: {
+            type: "Feature",
+            geometry: {
+              type: "LineString",
+              coordinates: [],
+            },
+          },
+        });
+
+        map.addLayer({
+          id: "route-line",
+          type: "line",
+          source: "route",
+          layout: { "line-cap": "round", "line-join": "round" },
+          paint: {
+            "line-color": "#0070bc",
+            "line-width": 5,
+          },
+        });
+
+        // Add Place Names
+        route.forEach((place) => {
+          var label = document.createElement("div");
+          label.className = "place-label";
+          label.innerText = place.name;
+
+          new maplibregl.Marker({ element: label })
+            .setLngLat(place.coords)
+            .addTo(map);
+        });
+
+        var vehicle = document.createElement("div");
+        vehicle.style.width = "35px";
+        vehicle.style.height = "35px";
+        vehicle.style.backgroundImage =
+          "url(https://cdn-icons-png.flaticon.com/512/3448/3448333.png)"; // Bus icon
+        vehicle.style.backgroundSize = "cover";
+        vehicle.style.borderRadius = "50%";
+
+        var vehicleMarker = new maplibregl.Marker(vehicle)
+          .setLngLat(route[0].coords)
+          .addTo(map);
+
+        let index = 0;
+        let traveledPath = [];
+
+        function moveVehicle() {
+          if (index >= route.length - 1) {
+            index = 0;
+            traveledPath = []; // Reset path
+            map.getSource("route").setData({
+              type: "Feature",
+              geometry: { type: "LineString", coordinates: traveledPath },
+            });
+          }
+
+          let start = route[index].coords;
+          let end = route[index + 1].coords;
+          let steps = 100,
+            step = 0;
+
+          let interval = setInterval(() => {
+            if (step < steps) {
+              let newLng = start[0] + (end[0] - start[0]) * (step / steps);
+              let newLat = start[1] + (end[1] - start[1]) * (step / steps);
+
+              vehicleMarker.setLngLat([newLng, newLat]);
+
+              traveledPath.push([newLng, newLat]);
+              map.getSource("route").setData({
+                type: "Feature",
+                geometry: { type: "LineString", coordinates: traveledPath },
+              });
+
+              map.flyTo({
+                center: [newLng, newLat],
+                zoom: 10,
+                pitch: 50,
+                bearing: 30,
+              });
+
+              step++;
+            } else {
+              clearInterval(interval);
+              index++;
+              setTimeout(moveVehicle, 1200); // Wait before moving to next place
+            }
+          }, 40); // **Smooth movement**
+        }
+
+        moveVehicle(); // Start loop
+      });
+    </script>
+  </body>
+</html>

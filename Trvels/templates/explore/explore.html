@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="{% static 'files/logo.png' %}" />
+    <title>Honeymoon Destinations</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/explore.css' %}"
+    />
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+    <br /><br /><br /><br />
+
+    <div class="honeymoon-container">
+      <div class="ssidebar">
+        <h3>Filters</h3>
+        <div class="filter-group">
+          <label>Location</label>
+          <select id="locationFilter">
+            <option value="all">Anywhere</option>
+            <option value="domestic">Domestic</option>
+            <option value="international">International</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Budget Per Person (₹)</label>
+          <input
+            type="range"
+            id="budgetFilter"
+            min="7000"
+            max="105000"
+            value="105000"
+          />
+          <p id="budgetValue">₹105,000</p>
+        </div>
+      </div>
+
+      <div class="destinations-container">
+        <div class="destinations" id="destinationsGrid">
+          {% for location in locations %}
+          <div
+            class="destination-card"
+            data-price="{{ location.price }}"
+            data-location="{{ location.location_type }}"
+          >
+            <img src="{{ location.image_url }}" alt="{{ location.name }}" />
+            <h3>{{ location.name }}</h3>
+            <p>{{ location.description }}</p>
+            <p class="price">₹{{ location.price }}</p>
+            <a href="{% url 'location' location.id %}" class="explore-btn"
+              >Explore</a
+            >
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <script src="{% static 'js/explore.js' %}"></script>
+  </body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Itinerary</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+      }
+      .itinerary {
+        background: #fff;
+        padding: 20px;
+        margin: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .schedule-title {
+        color: #008eff;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+      .day-item {
+        display: flex;
+        align-items: flex-start;
+        border-left: 4px solid #008eff;
+        padding-left: 15px;
+        margin-bottom: 20px;
+      }
+      .day-indicator {
+        font-weight: bold;
+        color: #555;
+        font-size: 16px;
+      }
+      .day-content {
+        margin-left: 10px;
+      }
+      .day-title {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .day-date {
+        font-size: 14px;
+        color: #888;
+      }
+      .day-description {
+        font-size: 14px;
+        color: #666;
+      }
+      .know-more {
+        color: #008eff;
+        font-weight: bold;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+      }
+      .popup-content {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        width: 40%;
+        text-align: center;
+      }
+      .close {
+        float: right;
+        font-size: 20px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="itinerary">
+      <div class="schedule-title">Kashmir Itinerary</div>
+
+      <div class="day-item">
+        <span class="day-indicator">DAY 1</span>
+        <div class="day-content">
+          <div class="day-title">Arrival in Srinagar</div>
+          <div class="day-date">MAR 10, 2025</div>
+          <div class="day-description">
+            Arrival at Srinagar, houseboat check-in, Shikara ride
+            <a class="know-more" onclick="openPopup('day1')">Know more →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-item">
+        <span class="day-indicator">DAY 2</span>
+        <div class="day-content">
+          <div class="day-title">Gulmarg Adventure</div>
+          <div class="day-date">MAR 11, 2025</div>
+          <div class="day-description">
+            Explore the scenic Gulmarg, enjoy a Gondola ride, and try skiing
+            <a class="know-more" onclick="openPopup('day2')">Know more →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-item">
+        <span class="day-indicator">DAY 3</span>
+        <div class="day-content">
+          <div class="day-title">Pahalgam Exploration</div>
+          <div class="day-date">MAR 12, 2025</div>
+          <div class="day-description">
+            Visit Betaab Valley, Aru Valley, and the Lidder River
+            <a class="know-more" onclick="openPopup('day3')">Know more →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-item">
+        <span class="day-indicator">DAY 4</span>
+        <div class="day-content">
+          <div class="day-title">Sonmarg Excursion</div>
+          <div class="day-date">MAR 13, 2025</div>
+          <div class="day-description">
+            Enjoy the beauty of Sonmarg, visit Thajiwas Glacier
+            <a class="know-more" onclick="openPopup('day4')">Know more →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-item">
+        <span class="day-indicator">DAY 5</span>
+        <div class="day-content">
+          <div class="day-title">Doodhpathri Visit</div>
+          <div class="day-date">MAR 14, 2025</div>
+          <div class="day-description">
+            Explore the lush meadows and streams of Doodhpathri
+            <a class="know-more" onclick="openPopup('day5')">Know more →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-item">
+        <span class="day-indicator">DAY 6</span>
+        <div class="day-content">
+          <div class="day-title">Yusmarg Day Trip</div>
+          <div class="day-date">MAR 15, 2025</div>
+          <div class="day-description">
+            Hike through forests, enjoy breathtaking landscapes
+            <a class="know-more" onclick="openPopup('day6')">Know more →</a>
+          </div>
+        </div>
+      </div>
+      {% if location.brochure %}
+      <a href="{{ location.brochure.url }}" class="btn-brochure" download
+        >Download Brochure</a
+      >
+      {% endif %}
+    </div>
+
+    <div id="popup-modal" class="popup">
+      <div class="popup-content">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <h4 id="popup-title"></h4>
+        <p id="popup-details"></p>
+      </div>
+    </div>
+
+    <script>
+      function openPopup(day) {
+        const details = {
+          day1: {
+            title: "Arrival in Srinagar",
+            info: "Arrival at Srinagar, check-in at houseboat, and relax with a beautiful Shikara ride in Dal Lake.",
+          },
+          day2: {
+            title: "Gulmarg Adventure",
+            info: "Travel to Gulmarg, enjoy a Gondola ride, and experience skiing on the pristine slopes.",
+          },
+          day3: {
+            title: "Pahalgam Exploration",
+            info: "Visit Betaab Valley, Aru Valley, and the scenic Lidder River for a serene experience.",
+          },
+          day4: {
+            title: "Sonmarg Excursion",
+            info: "Enjoy breathtaking landscapes in Sonmarg and visit the famous Thajiwas Glacier.",
+          },
+          day5: {
+            title: "Doodhpathri Visit",
+            info: "Explore the lush meadows, pine forests, and streams of Doodhpathri.",
+          },
+          day6: {
+            title: "Yusmarg Day Trip",
+            info: "Enjoy a peaceful day trip to Yusmarg with picturesque hiking trails.",
+          },
+        };
+        document.getElementById("popup-title").innerText = details[day].title;
+        document.getElementById("popup-details").innerText = details[day].info;
+        document.getElementById("popup-modal").style.display = "flex";
+      }
+      function closePopup() {
+        document.getElementById("popup-modal").style.display = "none";
+      }
+    </script>
+  </body>
+</html>

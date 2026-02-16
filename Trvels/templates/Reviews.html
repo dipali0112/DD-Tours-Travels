@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Review Section</title>
+    <style>
+      .review-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f8f8f8;
+        overflow: hidden;
+      }
+      .review-container {
+        width: 60%;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .reviews {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+      }
+      .review {
+        width: 30%;
+        background: white;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        text-align: center;
+        margin: 10px;
+        flex-shrink: 0;
+        transform: scale(0.8);
+        transition: transform 0.5s;
+      }
+      .review.active {
+        transform: scale(1.2);
+      }
+      .review img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-top: 10px;
+      }
+      .review h3 {
+        margin-top: 10px;
+      }
+      .review p {
+        margin: 10px 0;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="review-container">
+      <div class="reviews" id="review-slider">
+        <div class="review">
+          <h3>John Doe ★★★★★</h3>
+          <p>
+            "Amazing experience! Everything was well-organized, and I enjoyed
+            every moment of my trip. Highly recommended!"
+          </p>
+          <img src="https://via.placeholder.com/50" alt="user" />
+        </div>
+        <div class="review active">
+          <h3>Jane Smith ★★★★☆</h3>
+          <p>
+            "The service was excellent, and the guides were very knowledgeable.
+            I had a wonderful time exploring new places!"
+          </p>
+          <img src="https://via.placeholder.com/50" alt="user" />
+        </div>
+        <div class="review">
+          <h3>Emily Johnson ★★★★★</h3>
+          <p>
+            "One of the best travel experiences I've ever had! From booking to
+            the actual trip, everything was seamless."
+          </p>
+          <img src="https://via.placeholder.com/50" alt="user" />
+        </div>
+        <div class="review">
+          <h3>Michael Brown ★★★★☆</h3>
+          <p>
+            "Great guides, smooth booking process, and amazing destinations!
+            Will definitely book another trip soon."
+          </p>
+          <img src="https://via.placeholder.com/50" alt="user" />
+        </div>
+        <div class="review">
+          <h3>Sarah Wilson ★★★★★</h3>
+          <p>
+            "A wonderful trip filled with incredible memories. I can't wait for
+            my next adventure with this company!"
+          </p>
+          <img src="https://via.placeholder.com/50" alt="user" />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let slider = document.getElementById("review-slider");
+      let reviews = document.querySelectorAll(".review");
+      let index = 0;
+
+      function slideReviews() {
+        slider.style.transition = "transform 0.5s ease-in-out";
+        index++;
+
+        if (index > reviews.length - 3) {
+          index = 0;
+          slider.style.transition = "none";
+          slider.style.transform = `translateX(0)`;
+          setTimeout(() => {
+            slider.style.transition = "transform 0.5s ease-in-out";
+          }, 50);
+        } else {
+          slider.style.transform = `translateX(${-index * 35}%)`;
+        }
+
+        updateActiveReview();
+      }
+
+      function updateActiveReview() {
+        let reviewElements = document.querySelectorAll(".review");
+        reviewElements.forEach((review) => review.classList.remove("active"));
+        if (reviewElements[index + 1]) {
+          reviewElements[index + 1].classList.add("active");
+        }
+      }
+
+      setInterval(slideReviews, 4000);
+    </script>
+  </body>
+</html>

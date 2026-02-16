@@ -1,0 +1,280 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plan Your Trip</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style.css' %}"
+    />
+    <script defer src="{% static 'script.js' %}"></script>
+    <style>
+      /* General Styling */
+
+      nav {
+        background: white;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        height: 65px;
+      }
+      navbar {
+        justify-content: flex-end;
+      }
+      nav h2,
+      .navbar a {
+        color: #0086ce; /* Change text color to blue */
+      }
+      /* General Styles */
+      .where2go {
+        padding: 80px 0;
+        background-color: #f8f8f8;
+        text-align: center;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      .where2go-title {
+        font-size: 36px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      .where2go-subtitle {
+        font-size: 18px;
+        color: #555;
+        margin-bottom: 40px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+      }
+
+      .destination-card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      }
+
+      .destination-card:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      .destination-card img {
+        width: 100%;
+        height: 200px;
+        border-radius: 10px;
+        object-fit: cover;
+      }
+
+      .destination-card h2 {
+        font-size: 22px;
+        margin: 15px 0;
+        color: #0086ce;
+      }
+
+      .destination-card p {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 15px;
+      }
+
+      .explore-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        background: #0086ce;
+        color: white;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background 0.3s ease-in-out;
+      }
+
+      .explore-btn:hover {
+        background: #005f99;
+      }
+    </style>
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+    <section class="where2go">
+      <div class="container">
+        <h1 class="where2go-title">
+          Where2Go - Discover Places & Plan Your Holidays!
+        </h1>
+        <p class="where2go-subtitle">
+          Planning your next vacation? Choose from these amazing travel ideas to
+          make your trip unforgettable.
+        </p>
+
+        <div class="grid">
+          <div class="destination-card">
+            <img
+              src="{% static 'files/plantrip/adventure.jpg' %}"
+              alt="Adventure"
+            />
+            <h2>Adventure Spots</h2>
+            <p>
+              Get your adrenaline pumping with thrilling treks, rafting,
+              skydiving, and more.
+            </p>
+            <a href="{% url 'adventure' %}" class="explore-btn">Explore</a>
+          </div>
+          <div class="destination-card">
+            <img
+              src="{% static 'files/plantrip/spiritual.jpg' %}"
+              alt="Spiritual Destinations"
+            />
+            <h2>Spiritual Destinations</h2>
+            <p>
+              Find peace and devotion at sacred temples, ashrams, and holy
+              sites.
+            </p>
+            <a href="{% url 'spiritual' %}" class="explore-btn">Explore</a>
+          </div>
+          <div class="destination-card">
+            <img
+              src="{% static 'files/plantrip/mountains.jpg' %}"
+              alt="Hills & Mountains"
+            />
+            <h2>Hills & Mountains</h2>
+            <p>
+              Escape to the mountains and enjoy breathtaking landscapes and
+              peaceful retreats.
+            </p>
+            <a href="{% url 'mountains' %}" class="explore-btn">Explore</a>
+          </div>
+
+          <div class="destination-card">
+            <img
+              src="{% static 'files/plantrip/heritage.jpg' %}"
+              alt="Heritage Destinations"
+            />
+            <h2>Heritage Destinations</h2>
+            <p>
+              Explore the rich history and marvel at ancient monuments and
+              cultural wonders.
+            </p>
+            <a href="{% url 'heritage' %}" class="explore-btn">Explore</a>
+          </div>
+
+          <div class="destination-card">
+            <img
+              src="{% static 'files/plantrip/honeymoon.jpg' %}"
+              alt="Honeymoon Hotspots"
+            />
+            <h2>Honeymoon Hotspots</h2>
+            <p>
+              Experience romantic getaways, dreamy resorts, and stunning
+              landscapes.
+            </p>
+            <a href="{% url 'honeymoon' %}" class="explore-btn">Explore</a>
+          </div>
+
+          <div class="destination-card">
+            <img
+              src="{% static 'files/plantrip/weekend.jpg' %}"
+              alt="Weekend Getaways"
+            />
+            <h2>Weekend Getaways</h2>
+            <p>
+              Recharge with a quick weekend escape to beautiful and peaceful
+              locations.
+            </p>
+            <a href="{% url 'weekend' %}" class="explore-btn">Explore</a>
+          </div>
+
+          <div class="destination-card">
+            <img
+              src="{% static 'files/plantrip/romantic.jpg' %}"
+              alt="Romantic Places"
+            />
+            <h2>Romantic Places</h2>
+            <p>
+              Plan a dreamy getaway with your loved one to magical destinations.
+            </p>
+            <a href="{% url 'romantic' %}" class="explore-btn">Explore</a>
+          </div>
+
+          <div class="destination-card">
+            <img
+              src="{% static 'files/plantrip/pilgrimage.jpg' %}"
+              alt="Pilgrimage Spots"
+            />
+            <h2>Pilgrimage Spots</h2>
+            <p>
+              Find peace and spirituality at renowned religious sites across the
+              world.
+            </p>
+            <a href="{% url 'pilgrimage' %}" class="explore-btn">Explore</a>
+          </div>
+
+          <div class="destination-card">
+            <img
+              src="{% static 'files/plantrip/food.jpg' %}"
+              alt="Foodie Dreams"
+            />
+            <h2>Foodie Dreams</h2>
+            <p>
+              Indulge in the finest local and international cuisines on your
+              travel journey.
+            </p>
+            <a href="{% url 'foodie' %}" class="explore-btn">Explore</a>
+          </div>
+
+          <div class="destination-card">
+            <img
+              src="{% static 'files/plantrip/trekking.jpg' %}"
+              alt="Trekking Hotspots"
+            />
+            <h2>Trekking Hotspots</h2>
+            <p>Embark on thrilling treks and explore nature’s hidden gems.</p>
+            <a href="{% url 'trekking' %}" class="explore-btn">Explore</a>
+          </div>
+
+          <div class="destination-card">
+            <img
+              src="{% static 'files/plantrip/relax.jpg' %}"
+              alt="Places to Relax"
+            />
+            <h2>Places to Relax</h2>
+            <p>
+              Unwind in peaceful retreats with spas, beach walks, and nature
+              escapes.
+            </p>
+            <a href="{% url 'relax' %}" class="explore-btn">Explore</a>
+          </div>
+
+          <div class="destination-card">
+            <img
+              src="{% static 'files/plantrip/international.jpg' %}"
+              alt="International Destinations"
+            />
+            <h2>International Destinations</h2>
+            <p>
+              Discover global wonders, experience new cultures, and taste exotic
+              cuisines.
+            </p>
+            <a href="{% url 'international' %}" class="explore-btn">Explore</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {% include 'footer.html' %}
+  </body>
+</html>

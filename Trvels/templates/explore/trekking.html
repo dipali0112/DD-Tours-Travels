@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="{% static 'files/logo.png' %}" />
+    <title>Honeymoon Destinations</title>
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/explore.css' %}"
+    />
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+    <br /><br /><br /><br />
+
+    <div class="honeymoon-container">
+      <!-- Sidebar for Filters -->
+      <div class="ssidebar">
+        <h3>Filters</h3>
+        <div class="filter-group">
+          <label>Location</label>
+          <select id="locationFilter">
+            <option value="all">Anywhere</option>
+            <option value="domestic">Domestic</option>
+            <option value="international">International</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Budget Per Person (₹)</label>
+          <input
+            type="range"
+            id="budgetFilter"
+            min="7000"
+            max="105000"
+            value="105000"
+          />
+          <p id="budgetValue">₹105,000</p>
+        </div>
+      </div>
+
+      <!-- Destinations Grid -->
+      <div class="destinations-container">
+        <div class="destinations" id="destinationsGrid">
+          <!-- Destination Cards -->
+          <div
+            class="destination-card"
+            data-price="35000"
+            data-location="domestic"
+          >
+            <img
+              src="https://source.unsplash.com/300x200/?temple,varanasi"
+              alt="Varanasi"
+            />
+            <h3>Varanasi</h3>
+            <p>Sacred city with spiritual significance.</p>
+            <p class="price">₹35,000</p>
+            <a href="#" class="explore-btn">Explore</a>
+          </div>
+
+          <div
+            class="destination-card"
+            data-price="28765"
+            data-location="domestic"
+          >
+            <img
+              src="https://source.unsplash.com/300x200/?temple,tirupati"
+              alt="Tirupati"
+            />
+            <h3>Tirupati</h3>
+            <p>Famous pilgrimage site in Andhra Pradesh.</p>
+            <p class="price">₹28,765</p>
+            <a href="#" class="explore-btn">Explore</a>
+          </div>
+
+          <div
+            class="destination-card"
+            data-price="31250"
+            data-location="domestic"
+          >
+            <img
+              src="https://source.unsplash.com/300x200/?temple,puri"
+              alt="Puri"
+            />
+            <h3>Puri</h3>
+            <p>Well-known for Jagannath Temple and beaches.</p>
+            <p class="price">₹31,250</p>
+            <a href="#" class="explore-btn">Explore</a>
+          </div>
+
+          <div
+            class="destination-card"
+            data-price="27500"
+            data-location="domestic"
+          >
+            <img
+              src="https://source.unsplash.com/300x200/?temple,haridwar"
+              alt="Haridwar"
+            />
+            <h3>Haridwar</h3>
+            <p>A holy city for spiritual seekers.</p>
+            <p class="price">₹27,500</p>
+            <a href="#" class="explore-btn">Explore</a>
+          </div>
+
+          <div
+            class="destination-card"
+            data-price="32000"
+            data-location="domestic"
+          >
+            <img
+              src="https://source.unsplash.com/300x200/?temple,amritsar"
+              alt="Amritsar"
+            />
+            <h3>Amritsar</h3>
+            <p>Home to the Golden Temple.</p>
+            <p class="price">₹32,000</p>
+            <a href="#" class="explore-btn">Explore</a>
+          </div>
+
+          <div
+            class="destination-card"
+            data-price="7000"
+            data-location="international"
+          >
+            <img
+              src="https://source.unsplash.com/300x200/?beach,bali"
+              alt="Bali"
+            />
+            <h3>Bali</h3>
+            <p>Tropical beach paradise.</p>
+            <p class="price">₹7,000</p>
+            <a href="#" class="explore-btn">Explore</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="{% static 'js/explore.js' %}"></script>
+  </body>
+</html>

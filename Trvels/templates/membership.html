@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Membership - Unlock Exclusive Savings</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background-color: #f7f9fc; /* Light gray-blue background */
+        color: #333;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Updated Membership Page Styling */
+      ::-webkit-scrollbar {
+        width: 12px;
+        height: 12px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #e8ecef;
+        border-radius: 10px;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(
+          45deg,
+          #0086ce,
+          #006699
+        ); /* Matches navbar */
+        border-radius: 10px;
+        border: 2px solid #f7f9fc;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(45deg, #006699, #0086ce);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      html {
+        scrollbar-width: thin;
+        scrollbar-color: #0086ce #e8ecef;
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .hero-section {
+        position: relative;
+        text-align: center;
+        padding: 60px 20px;
+        background: linear-gradient(
+          135deg,
+          #0086ce 0%,
+          #004d7a 100%
+        ); /* Adjusted to navbar color */
+        color: #fff;
+        border-radius: 15px;
+        margin-bottom: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        margin-top: 65px; /* Offset for fixed navbar */
+      }
+
+      .hero-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("https://source.unsplash.com/1600x900/?travel,destination")
+          no-repeat center center/cover;
+        opacity: 0.2;
+        z-index: 0;
+      }
+
+      .hero-section h1 {
+        font-size: 3em;
+        margin-bottom: 10px;
+        position: relative;
+        z-index: 1;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero-section p {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-button {
+        padding: 12px 30px;
+        background-color: #0086ce; /* Matches navbar */
+        color: #fff;
+        border: none;
+        border-radius: 25px;
+        font-size: 1.1em;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .cta-button:hover {
+        background-color: #006699; /* Darker shade for hover */
+        transform: translateY(-3px);
+      }
+
+      .membership-intro {
+        text-align: center;
+        margin-bottom: 60px;
+        padding: 0 20px;
+      }
+
+      .membership-intro h2 {
+        font-size: 2.5em;
+        color: #0086ce; /* Matches navbar */
+        margin-bottom: 15px;
+      }
+
+      .membership-intro p {
+        font-size: 1.1em;
+        color: #666;
+        margin-bottom: 10px;
+      }
+
+      .membership-intro .highlight {
+        color: #0086ce; /* Matches navbar */
+        font-weight: 600;
+      }
+
+      .savings-section,
+      .family-membership-section {
+        margin-bottom: 60px;
+      }
+
+      .savings-section h2,
+      .family-membership-section h2 {
+        font-size: 2.2em;
+        color: #0086ce; /* Matches navbar */
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .savings-list,
+      .family-membership-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        padding: 0 20px;
+      }
+
+      .savings-card,
+      .family-membership-card {
+        background: #fff;
+        padding: 25px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .savings-card:hover,
+      .family-membership-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .savings-card h3,
+      .family-membership-card h3 {
+        font-size: 1.5em;
+        color: #0086ce; /* Matches navbar */
+        margin-bottom: 15px;
+      }
+
+      .savings-card p,
+      .family-membership-card p {
+        font-size: 0.95em;
+        color: #666;
+        margin-bottom: 15px;
+      }
+
+      .savings-card .price,
+      .family-membership-card .price {
+        font-size: 1.3em;
+        margin-bottom: 10px;
+      }
+
+      .savings-card .original-price,
+      .family-membership-card .original-price {
+        color: #999;
+      }
+
+      .savings-card .member-price,
+      .family-membership-card .member-price {
+        color: #0086ce; /* Matches navbar */
+        font-weight: bold;
+      }
+
+      .savings-card i,
+      .family-membership-card i {
+        font-size: 2.5em;
+        color: #0086ce; /* Matches navbar */
+        margin-bottom: 15px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 30px 0;
+        background: #0086ce; /* Matches navbar */
+        color: #fff;
+        border-radius: 15px;
+        margin-top: 40px;
+      }
+
+      footer p {
+        font-size: 0.95em;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .membership-intro,
+      .savings-section,
+      .family-membership-section {
+        animation: fadeInUp 0.8s ease-out forwards;
+      }
+
+      @media (max-width: 768px) {
+        .hero-section h1 {
+          font-size: 2.2em;
+        }
+
+        .hero-section p {
+          font-size: 1em;
+        }
+
+        .membership-intro h2,
+        .savings-section h2,
+        .family-membership-section h2 {
+          font-size: 1.8em;
+        }
+
+        .savings-card,
+        .family-membership-card {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    {% load static %} {% include 'navbar.html' %}
+
+    <div class="container">
+      <section class="hero-section">
+        <h1>Unlock Exclusive Travel Savings</h1>
+        <p>
+          Join our membership and get a flat 10% discount on all your bookings!
+        </p>
+        <button class="cta-button" onclick="joinMembership('Hero CTA')">
+          Join Now & Save Big
+        </button>
+      </section>
+
+      <section class="membership-intro">
+        <h2>Single Membership</h2>
+        <p>
+          Become a member for just <span class="highlight">₹5000/year</span> and
+          enjoy a flat <span class="highlight">10% discount</span> on all your
+          bookings.
+        </p>
+        <p>
+          Recover your membership cost in just 2 bookings with an average spend
+          of ₹25,000 per booking and start saving more from your third booking
+          onwards!
+        </p>
+        <button
+          class="cta-button"
+          onclick="joinMembership('Single Membership')"
+        >
+          Join Now
+        </button>
+      </section>
+
+      <section class="family-membership-section">
+        <h2>Family Membership Plans</h2>
+        <p style="text-align: center; color: #666">
+          Get the same flat 10% discount for your entire family with our
+          affordable family plans!
+        </p>
+        <div class="family-membership-list">
+          <div class="family-membership-card">
+            <i class="fas fa-users"></i>
+            <h3>Family of 2</h3>
+            <p>Perfect for couples or small families.</p>
+            <div class="price">
+              <span class="member-price">₹9000/year</span>
+            </div>
+            <p>Only ₹4500 per person!</p>
+            <button
+              class="cta-button"
+              onclick="joinMembership('Family Membership for 2 Persons')"
+            >
+              Join Now
+            </button>
+          </div>
+
+          <div class="family-membership-card">
+            <i class="fas fa-users"></i>
+            <h3>Family of 3</h3>
+            <p>Great for small families with a child.</p>
+            <div class="price">
+              <span class="member-price">₹12,000/year</span>
+            </div>
+            <p>Only ₹4000 per person!</p>
+            <button
+              class="cta-button"
+              onclick="joinMembership('Family Membership for 3 Persons')"
+            >
+              Join Now
+            </button>
+          </div>
+
+          <div class="family-membership-card">
+            <i class="fas fa-users"></i>
+            <h3>Family of 4</h3>
+            <p>Best value for larger families.</p>
+            <div class="price">
+              <span class="member-price">₹14,000/year</span>
+            </div>
+            <p>Only ₹3500 per person!</p>
+            <button
+              class="cta-button"
+              onclick="joinMembership('Family Membership for 4 Persons')"
+            >
+              Join Now
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="savings-section">
+        <h2>How Much Can You Save?</h2>
+        <div class="savings-list">
+          <div class="savings-card">
+            <i class="fas fa-wallet"></i>
+            <h3>Small Booking (₹15,000)</h3>
+            <p>Ideal for short getaways or weekend trips.</p>
+            <div class="price">
+              <span class="original-price">Original: ₹15,000</span><br />
+              <span class="member-price">Member: ₹13,500</span>
+            </div>
+            <p>Save ₹1,500 per booking!</p>
+          </div>
+
+          <div class="savings-card">
+            <i class="fas fa-wallet"></i>
+            <h3>Medium Booking (₹25,000)</h3>
+            <p>Perfect for a 4-5 day adventure.</p>
+            <div class="price">
+              <span class="original-price">Original: ₹25,000</span><br />
+              <span class="member-price">Member: ₹22,500</span>
+            </div>
+            <p>Save ₹2,500 per booking!</p>
+          </div>
+
+          <div class="savings-card">
+            <i class="fas fa-wallet"></i>
+            <h3>Large Booking (₹35,000)</h3>
+            <p>Great for a week-long journey.</p>
+            <div class="price">
+              <span class="original-price">Original: ₹35,000</span><br />
+              <span class="member-price">Member: ₹31,500</span>
+            </div>
+            <p>Save ₹3,500 per booking!</p>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <p>Travel More, Save More | Contact Us: support@travelmembership.com</p>
+      </footer>
+    </div>
+
+    <script>
+      function joinMembership(plan) {
+        alert(
+          `Thank you for choosing the ${plan}! You'll be redirected to the payment page to join. (Mock action)`
+        );
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,322 @@
+/* General Styles */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+
+  background-color: #f5f5f5;
+}
+
+/* Banner */
+.banner {
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 400px; /* Adjust height as needed */
+  width: 100%;
+  z-index: 1; /* Ensure it stays behind header */
+}
+
+.banner-img {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+/* Header */
+nav {
+  width: 100%;
+  position: fixed; /* Sticky or Fixed */
+  top: 0;
+
+  background-color: white;
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 15%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000; /* Ensure it stays above all content */
+}
+nav h2, 
+/* Adjust body margin to account for the fixed header */
+body {
+  margin-top: 60px; /* Adjust this value based on the height of your header */
+}
+
+/* Section */
+.details {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #fff;
+}
+
+/* Left Section */
+.left-section {
+  width: 60%;
+  zoom: 0.9;
+}
+
+.left-section h1 {
+  color: #0070bc; /* Changed color */
+  font-size: 2.5em;
+}
+
+.left-section h3 {
+  font-size: 1.5em;
+  color: #555;
+}
+
+.icons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 30px;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+.icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 10px;
+}
+
+.icon-item i {
+  font-size: 30px;
+  color: #0070bc;
+  margin-bottom: 5px;
+}
+
+.icon-item p {
+  font-size: 19px;
+  color: #333;
+  margin: 0;
+}
+
+/* About Section */
+.about {
+  margin: 20px 0;
+  padding-bottom: 0px;
+}
+
+.about h4 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.about p {
+  color: #777;
+}
+
+.btn-brochure {
+  padding: 10px 20px;
+  background-color: #0070bc; /* Changed color */
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+/* Right Section (Price Card) */
+.right-section {
+  width: 35%;
+}
+
+.price-card {
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border-radius: 10px;
+}
+
+.price-card h2 {
+  color: #0070bc; /* Changed color */
+  font-size: 2em;
+}
+
+.price-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  color: #555;
+}
+
+.price-card ul li {
+  margin-bottom: 10px;
+}
+
+.btn-book {
+  padding: 10px 20px;
+  background-color: #0070bc; /* Changed color */
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.inquiry-form {
+  padding-top: 30px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 90px;
+  margin-bottom: 0px;
+}
+
+.form-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.form-container h2 {
+  color: #0070bc;
+  margin-bottom: 20px;
+}
+
+.form-container label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+.form-container input,
+.form-container select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.form-container .btn-submit {
+  padding: 10px 20px;
+  background-color: #0070bc;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.footer {
+  padding-top: 0px;
+  margin-top: 0px;
+}
+/* Itinerary Section */
+/* .itinerary {
+  margin-top: 40px;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+} */
+
+/* .itinerary h3 {
+  color: #0070bc;
+  font-size: 24px;
+  margin-bottom: 10px;
+} */
+
+/* .itinerary-map-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 40px;
+} */
+
+/* .itinerary {
+  flex: 1;
+  max-width: 50%;
+} */
+
+/* .travel-map {
+  flex: 1;
+  max-width: 50%;
+  height: 100%;
+} */
+
+/* #map {
+  width: 100%;
+  height: 800px;
+} */
+
+/* Itinerary and Travel Map Container */
+.itinerary-map-container {
+  zoom: 0.9;
+  display: flex;
+  flex-direction: row;
+  gap: 20px; /* Space between itinerary and map */
+  align-items: flex-start; /* Align items at the top */
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+/* Itinerary Section */
+.itinerary {
+  flex: 1; /* Takes 50% of available space */
+  max-width: 50%;
+}
+
+/* Travel Map Section */
+.travel-map {
+  flex: 1;
+  max-width: 50%;
+  min-height: 700px; /* Ensures enough space for the map */
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensures proper spacing */
+}
+
+/* Travel Route Heading */
+.travel-map h3 {
+  color: #008eff;
+  font-size: 20px;
+  text-align: left;
+  /* margin-bottom: 15px; */
+}
+
+#map {
+  width: 100%;
+  /* height: 600px;  */
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  margin-top: 0;
+  margin-bottom: 20px;
+  min-height: 600px; /* Forces minimum height */
+  min-width: 630px;
+}
+
+/* Day Items */
+.day-item {
+  background: white;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.day-item h4 {
+  color: #0070bc;
+  font-size: 20px;
+}
+
+.travel-map {
+  margin-top: 20px;
+  width: 50%;
+}
+
+#map {
+  width: 70%;
+  height: 300px;
+  margin-top: 20px;
+  border: 2px solid #ddd;
+}

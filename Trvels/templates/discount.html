@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trip Discounts</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        background-color: #f0f2f5;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .header {
+        text-align: center;
+        padding: 40px 0;
+        background: linear-gradient(135deg, #1e90ff, #87cefa);
+        color: white;
+        border-radius: 10px;
+        margin-bottom: 30px;
+      }
+
+      .header h1 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+      }
+
+      .trips-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+
+      .trip-card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+
+      .trip-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .trip-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .trip-content {
+        padding: 20px;
+      }
+
+      .trip-title {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+        color: #1e90ff;
+      }
+
+      .original-price {
+        text-decoration: line-through;
+        color: #888;
+        margin-right: 10px;
+      }
+
+      .discount-price {
+        color: #ff4444;
+        font-weight: bold;
+        font-size: 1.2em;
+      }
+
+      .discount-badge {
+        background: #ff4444;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 15px;
+        display: inline-block;
+        margin-top: 10px;
+      }
+
+      .book-btn {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background: #1e90ff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 15px;
+        transition: background 0.3s;
+      }
+
+      .book-btn:hover {
+        background: #1873cc;
+      }
+
+      @media (max-width: 600px) {
+        .trips-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Exclusive Trip Discounts</h1>
+        <p>
+          Book your dream vacation across India & Beyond at unbeatable prices!
+        </p>
+      </div>
+
+      <div class="trips-grid" id="tripsContainer">
+        <!-- Trip cards will be added dynamically -->
+      </div>
+    </div>
+
+    <script>
+      const trips = [
+        {
+          title: "Goa Beach Escape",
+          image: "https://images.unsplash.com/photo-1587925358603-c2eea8865f45", // Placeholder for Goa beach
+          originalPrice: 35000,
+          discountPrice: 28000,
+          discount: 20,
+        },
+        {
+          title: "Manali Snow Retreat",
+          image: "https://images.unsplash.com/photo-1580974185962-6a7b79258e5d", // Placeholder for Manali snow
+          originalPrice: 40000,
+          discountPrice: 32000,
+          discount: 20,
+        },
+        {
+          title: "Kashmir Paradise Tour",
+          image: "https://images.unsplash.com/photo-1604942602700-0c3b07e7e1b9", // Placeholder for Kashmir
+          originalPrice: 42000,
+          discountPrice: 35000,
+          discount: 17,
+        },
+        {
+          title: "Bhutan Cultural Journey",
+          image: "https://images.unsplash.com/photo-1595431931559-4dbac661db87", // Placeholder for Bhutan
+          originalPrice: 45000,
+          discountPrice: 38000,
+          discount: 16,
+        },
+        {
+          title: "Nepal Himalayan Adventure",
+          image: "https://images.unsplash.com/photo-1544736770-3107c5630e42", // Placeholder for Nepal
+          originalPrice: 38000,
+          discountPrice: 30000,
+          discount: 21,
+        },
+        {
+          title: "Kerala Backwaters Bliss",
+          image: "https://images.unsplash.com/photo-1593691165820-424af7c0b4b0", // Placeholder for Kerala
+          originalPrice: 36000,
+          discountPrice: 29000,
+          discount: 19,
+        },
+      ];
+
+      function createTripCards() {
+        const container = document.getElementById("tripsContainer");
+
+        trips.forEach((trip) => {
+          const card = document.createElement("div");
+          card.className = "trip-card";
+
+          card.innerHTML = `
+                    <img src="${trip.image}" alt="${trip.title}" class="trip-image">
+                    <div class="trip-content">
+                        <h2 class="trip-title">${trip.title}</h2>
+                        <div>
+                            <span class="original-price">₹${trip.originalPrice}</span>
+                            <span class="discount-price">₹${trip.discountPrice}</span>
+                        </div>
+                        <span class="discount-badge">${trip.discount}% OFF</span>
+                        <button class="book-btn">Book Now</button>
+                    </div>
+                `;
+
+          container.appendChild(card);
+        });
+
+        // Add click event listeners to booking buttons
+        const buttons = document.querySelectorAll(".book-btn");
+        buttons.forEach((btn, index) => {
+          btn.addEventListener("click", () => {
+            alert(
+              `Booking for ${trips[index].title} at ₹${trips[index].discountPrice}!`
+            );
+          });
+        });
+      }
+
+      // Initialize the page
+      document.addEventListener("DOMContentLoaded", createTripCards);
+    </script>
+  </body>
+</html>

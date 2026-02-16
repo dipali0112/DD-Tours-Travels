@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Career - Tour Guide & Web Development Openings</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f1f9f10;
+      }
+      .container {
+        width: 90%;
+        max-width: 1100px;
+        margin: auto;
+        padding: 30px 0;
+      }
+      .section-title {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
+        padding: 10px 0;
+        color: #333;
+      }
+      .job-card {
+        display: flex;
+        align-items: center;
+        background: white;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 14px;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease-in-out;
+        flex-wrap: wrap;
+      }
+      .job-card:hover {
+        transform: translateY(-5px);
+      }
+      .icon {
+        width: 60px;
+        height: 60px;
+        background: #007bff;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        margin-right: 20px;
+      }
+      .job-info {
+        flex-grow: 1;
+      }
+      .job-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 8px;
+      }
+      .job-details {
+        font-size: 16px;
+        color: #555;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .detail {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 16px;
+      }
+      .apply-btn {
+        padding: 10px 15px;
+        background: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+      .apply-btn:hover {
+        background: #0056b3;
+      }
+
+      @media (max-width: 768px) {
+        .job-card {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .icon {
+          margin-bottom: 10px;
+        }
+        .apply-btn {
+          margin-top: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    {%include 'navbar.html'%}<br />
+    <br />
+    <br />
+    <div class="container">
+      <h2 style="text-align: center; font-size: 30px; margin-bottom: 25px">
+        🚀 Career Opportunities
+      </h2>
+
+      <div class="section-title">Tour Guide Openings</div>
+      <div class="job-card">
+        <div class="icon">IT</div>
+        <div class="job-info">
+          <div class="job-title">Intern Tour Guide</div>
+          <div class="job-details">
+            <span class="detail">📍 Various Locations</span>
+            <span class="detail">💰 No Salary</span>
+            <span class="detail">🕒 Internship</span>
+          </div>
+        </div>
+        <button class="apply-btn" onclick="applyNow('Intern Tour Guide')">
+          Apply Now
+        </button>
+      </div>
+
+      <div class="job-card">
+        <div class="icon">ET</div>
+        <div class="job-info">
+          <div class="job-title">Experienced Tour Guide</div>
+          <div class="job-details">
+            <span class="detail">📍 Various Locations</span>
+            <span class="detail">💰 ₹20K per trip (Performance-based)</span>
+            <span class="detail">💪 Physically Fit Required</span>
+          </div>
+        </div>
+        <button class="apply-btn" onclick="applyNow('Experienced Tour Guide')">
+          Apply Now
+        </button>
+      </div>
+
+      <div class="section-title">Website Development Openings</div>
+      <div class="job-card">
+        <div class="icon">DD</div>
+        <div class="job-info">
+          <div class="job-title">Django Developer</div>
+          <div class="job-details">
+            <span class="detail">📍 Ahmedabad</span>
+            <span class="detail">💰 ₹30K per month</span>
+            <span class="detail">💻 Web Development</span>
+          </div>
+        </div>
+        <button class="apply-btn" onclick="applyNow('Django Developer')">
+          Apply Now
+        </button>
+      </div>
+
+      <div class="job-card">
+        <div class="icon">FD</div>
+        <div class="job-info">
+          <div class="job-title">Frontend Developer</div>
+          <div class="job-details">
+            <span class="detail">📍 Ahmedabad</span>
+            <span class="detail">💰 ₹30K per month</span>
+            <span class="detail">💻 Web Development</span>
+          </div>
+        </div>
+        <button class="apply-btn" onclick="applyNow('Frontend Developer')">
+          Apply Now
+        </button>
+      </div>
+    </div>
+    {%include 'footer.html'%}
+    <script>
+      function applyNow(jobTitle) {
+        alert(
+          `You are applying for: ${jobTitle}\nApplication process will be available soon!`
+        );
+      }
+    </script>
+  </body>
+</html>
